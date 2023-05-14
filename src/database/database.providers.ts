@@ -21,7 +21,6 @@ export const databaseProviders = [
         default:
           config = databaseConfig.development;
       }
-      console.log(config);
       const sequelize = new Sequelize(config);
       try {
         await sequelize.authenticate();

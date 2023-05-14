@@ -1,4 +1,9 @@
-import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  Inject,
+  Injectable,
+  NotFoundException,
+  UseGuards,
+} from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import CreateUserDto from './dtos/create-user.dto';
 import UpdateUserDto from './dtos/update-user.dto';

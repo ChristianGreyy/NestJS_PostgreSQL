@@ -10,16 +10,17 @@ export class AuthController {
 
   @Post('/login')
   async login(@Body() loginDto: LoginDto) {
-    const token = await this.authService.login(loginDto);
-    return token;
+    const access_token = await this.authService.login(loginDto);
+    return {
+      access_token: access_token,
+    };
   }
 
   @Post('/register')
   async register(@Body() registerDto: RegisterDto) {
-    const newUser = await this.authService.register(registerDto);
+    const message = await this.authService.register(registerDto);
     return {
-      message: 'Register successfully',
-      newUser,
+      message,
     };
   }
 }

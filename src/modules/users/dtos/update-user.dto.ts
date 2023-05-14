@@ -7,29 +7,29 @@ import {
   Matches,
   MaxLength,
   MinLength,
-} from "class-validator";
+} from 'class-validator';
 
 enum Gender {
-  male = "male",
-  female = "female",
+  male = 'male',
+  female = 'female',
 }
 
 enum Status {
-  active = "active",
-  inactive = "inactive",
+  active = 'active',
+  inactive = 'inactive',
 }
 
 export default class UpdateUserDto {
   @IsOptional()
-  @IsInt()
-  role_id!: number;
+  @IsString()
+  role!: string;
 
   @IsOptional()
   @IsString()
   @MinLength(8)
   @MaxLength(20)
   @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
-    message: "password too weak",
+    message: 'password too weak',
   })
   pass_word!: string;
 
@@ -37,23 +37,23 @@ export default class UpdateUserDto {
   @IsString()
   @MinLength(2)
   @MaxLength(20)
-  first_name!: string;
+  firstName!: string;
 
   @IsOptional()
   @IsString()
   @MinLength(2)
   @MaxLength(20)
-  last_name!: string;
+  lastName!: string;
 
   @IsOptional()
   @IsString()
   birthday!: string;
 
   @IsOptional()
-  @IsEnum(Gender, { message: "Invalid gender of user" })
+  @IsEnum(Gender, { message: 'Invalid gender of user' })
   gender!: string;
 
   @IsOptional()
-  @IsEnum(Status, { message: "Invalid status of user" })
+  @IsEnum(Status, { message: 'Invalid status of user' })
   status!: boolean;
 }
